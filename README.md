@@ -61,8 +61,8 @@ The extension zip will be written under `dist/`
 ## Install
 
 1. Open Ghidra.
-2. Go to `File > Install Extensions`.
-3. Select the Scalpel zip from `dist/`.
+2. Go to `File > Install Extensions`
+3. Select the Scalpel zip from `dist/`
 4. Restart Ghidra.
 5. Open a program and choose `Window > Scalpel`
 
