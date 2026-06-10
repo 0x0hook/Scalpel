@@ -1,7 +1,7 @@
 # Release
 
-1. Update `version` in `build.gradle`.
-2. Update `CHANGELOG.md`.
+1. Update `version` in `build.gradle`
+2. Update `CHANGELOG.md`
 3. Build the extension:
 
 ```powershell
@@ -16,5 +16,5 @@ export GHIDRA_INSTALL_DIR="$HOME/tools/ghidra_12.1_PUBLIC"
 ./scripts/build.sh
 ```
 
-4. Create a GitHub release.
-5. Attach the zip from `dist/`.
+4. Create a GitHub release
+5. Attach the zip from `dist/`
