@@ -1,8 +1,8 @@
 # Scalpel
 
-Dark-mode hex editing for Ghidra.
+Dark-mode hex editing for Ghidra
 
-Scalpel is a native Java/Swing Ghidra extension for reverse engineers and any low-level programmers/researchers.
+Scalpel is a native Java/Swing Ghidra extension for reverse engineers and any low-level programmers/researchers
 
 ![Scalpel running inside Ghidra](docs/assets/scalpel-ghidra.png)
 
@@ -21,13 +21,13 @@ Scalpel is a native Java/Swing Ghidra extension for reverse engineers and any lo
 
 ## Style
 
-BinEd's Ghidra extension helped anchor the packaging expectation: a Java extension with a dockable editor inside Ghidra.
+BinEd's Ghidra extension helped anchor the packaging expectation: a Java extension with a dockable editor inside Ghidra
 
 - [BinEd Ghidra Extension](https://bined.exbin.org/ghidra-extension/)
 
 ## Build
 
-Install Ghidra and Gradle, then point Gradle at your Ghidra folder.
+Install Ghidra and Gradle, then point Gradle at your Ghidra folder
 
 Windows PowerShell:
 
@@ -56,7 +56,7 @@ On Linux, the wrapper command is:
 ./gradlew buildExtension
 ```
 
-The extension zip will be written under `dist/`.
+The extension zip will be written under `dist/`
 
 ## Install
 
@@ -64,15 +64,15 @@ The extension zip will be written under `dist/`.
 2. Go to `File > Install Extensions`.
 3. Select the Scalpel zip from `dist/`.
 4. Restart Ghidra.
-5. Open a program and choose `Window > Scalpel`.
+5. Open a program and choose `Window > Scalpel`
 
-The extension zip is platform-neutral Java bytecode. A zip built on Windows can be installed on Linux, and a zip built on Linux can be installed on Windows, as long as the target Ghidra version is compatible.
+The extension zip is platform-neutral Java bytecode. A zip built on Windows can be installed on Linux, and a zip built on Linux can be installed on Windows, as long as the target Ghidra version is compatible
 
 ## Usage
 
-Open the Scalpel window and move around the Listing. With `follow` enabled, the table reloads at the current cursor address. Type an address and press `go` to inspect another region.
+Open the Scalpel window and move around the Listing. With `follow` enabled, the table reloads at the current cursor address. Type an address and press `go` to inspect another region
 
-To patch a byte, edit a hex cell with a two-digit value such as `90`, `CC`, or `00`. Ghidra records the edit through a transaction named `Scalpel patch`.
+To patch a byte, edit a hex cell with a two-digit value such as `90`, `CC`, or `00`. Ghidra records the edit through a transaction named `Scalpel patch`
 
 Search accepts contiguous or spaced hex:
 
