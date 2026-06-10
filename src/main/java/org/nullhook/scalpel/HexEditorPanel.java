@@ -65,6 +65,7 @@ final class HexEditorPanel extends JPanel implements HexPatchSink {
         addressField = field(22);
         searchField = field(18);
         lengthBox = new JComboBox<>(new Integer[] {256, 1024, 4096, 16384, 65536});
+        lengthBox.setSelectedItem(4096);
         followCursor = new JCheckBox("follow");
         title = new JLabel("$ scalpel");
         status = new JLabel("open a program");
@@ -163,9 +164,10 @@ final class HexEditorPanel extends JPanel implements HexPatchSink {
         table.setSelectionForeground(Color.WHITE);
         table.setGridColor(GRID);
         table.setShowGrid(true);
+        table.setFillsViewportHeight(true);
         table.setCellSelectionEnabled(true);
         table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         table.setDefaultRenderer(Object.class, new HexCellRenderer());
         table.setDefaultEditor(Object.class, new HexByteEditor(field(2)));
         table.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
@@ -204,8 +206,11 @@ final class HexEditorPanel extends JPanel implements HexPatchSink {
                 col.setPreferredWidth(145);
             } else if (i == HexTableModel.BYTES_PER_ROW + 1) {
                 col.setPreferredWidth(150);
+                col.setMinWidth(150);
             } else {
                 col.setPreferredWidth(38);
+                col.setMinWidth(38);
+                col.setMaxWidth(46);
             }
         }
     }

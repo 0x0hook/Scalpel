@@ -5,6 +5,7 @@ import docking.action.DockingAction;
 import docking.action.MenuData;
 import ghidra.app.plugin.PluginCategoryNames;
 import ghidra.app.plugin.ProgramPlugin;
+import ghidra.framework.main.UtilityPluginPackage;
 import ghidra.framework.plugintool.PluginInfo;
 import ghidra.framework.plugintool.PluginTool;
 import ghidra.framework.plugintool.util.PluginStatus;
@@ -14,7 +15,7 @@ import ghidra.program.util.ProgramLocation;
 
 @PluginInfo(
     status = PluginStatus.RELEASED,
-    packageName = "Scalpel",
+    packageName = UtilityPluginPackage.NAME,
     category = PluginCategoryNames.ANALYSIS,
     shortDescription = "Dark hex editor",
     description = "Dark-mode hex editor for malware triage and reverse engineering."
