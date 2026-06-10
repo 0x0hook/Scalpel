@@ -26,11 +26,20 @@ BinEd's Ghidra extension helped anchor the packaging expectation: a Java extensi
 
 ## Build
 
-Install Ghidra, then point Gradle at it:
+Install Ghidra and Gradle, then point Gradle at your Ghidra folder.
+
+Windows PowerShell:
 
 ```powershell
-$env:GHIDRA_INSTALL_DIR="C:\Tools\ghidra_12.0.4_PUBLIC"
-gradle buildExtension
+$env:GHIDRA_INSTALL_DIR="C:\path\to\ghidra_12.1_PUBLIC"
+.\scripts\build.ps1
+```
+
+Linux:
+
+```bash
+export GHIDRA_INSTALL_DIR="$HOME/tools/ghidra_12.1_PUBLIC"
+./scripts/build.sh
 ```
 
 Optional wrapper setup:
@@ -38,6 +47,12 @@ Optional wrapper setup:
 ```powershell
 gradle wrapper --gradle-version 8.8
 .\gradlew buildExtension
+```
+
+On Linux, the wrapper command is:
+
+```bash
+./gradlew buildExtension
 ```
 
 The extension zip will be written under `dist/`.
@@ -49,6 +64,8 @@ The extension zip will be written under `dist/`.
 3. Select the Scalpel zip from `dist/`.
 4. Restart Ghidra.
 5. Open a program and choose `Window > Scalpel`.
+
+The extension zip is platform-neutral Java bytecode. A zip built on Windows can be installed on Linux, and a zip built on Linux can be installed on Windows, as long as the target Ghidra version is compatible.
 
 ## Usage
 

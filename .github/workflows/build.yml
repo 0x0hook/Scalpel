@@ -12,7 +12,13 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
+    runs-on: ${{ matrix.os }}
     env:
       GHIDRA_ZIP_URL: ${{ github.event.inputs.ghidra_zip_url || vars.GHIDRA_ZIP_URL }}
 
@@ -48,5 +54,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: env.GHIDRA_ZIP_URL != ''
         with:
-          name: scalpel
+          name: scalpel-${{ matrix.os }}
           path: dist/*.zip

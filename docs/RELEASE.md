@@ -5,8 +5,15 @@
 3. Build the extension:
 
 ```powershell
-$env:GHIDRA_INSTALL_DIR="C:\Tools\ghidra_12.0.4_PUBLIC"
+$env:GHIDRA_INSTALL_DIR="C:\path\to\ghidra_12.1_PUBLIC"
 .\scripts\build.ps1
+```
+
+Linux:
+
+```bash
+export GHIDRA_INSTALL_DIR="$HOME/tools/ghidra_12.1_PUBLIC"
+./scripts/build.sh
 ```
 
 4. Create a GitHub release.
