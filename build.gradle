@@ -1,0 +1,32 @@
+plugins {
+    id "java"
+}
+
+group = "org.nullhook"
+version = "0.1.0"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.release = 17
+}
+
+def ghidraInstallDir = providers.gradleProperty("GHIDRA_INSTALL_DIR")
+    .orElse(providers.environmentVariable("GHIDRA_INSTALL_DIR"))
+    .orNull
+
+if (ghidraInstallDir) {
+    apply from: "${ghidraInstallDir}/support/buildExtension.gradle"
+} else {
+    tasks.register("buildExtension") {
+        group = "ghidra"
+        doLast {
+            throw new GradleException("Set GHIDRA_INSTALL_DIR to your Ghidra install path.")
+        }
+    }
+}

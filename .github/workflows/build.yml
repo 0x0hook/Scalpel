@@ -1,0 +1,52 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      ghidra_zip_url:
+        description: Ghidra release zip URL
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      GHIDRA_ZIP_URL: ${{ github.event.inputs.ghidra_zip_url || vars.GHIDRA_ZIP_URL }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.8"
+
+      - name: Prepare Ghidra
+        if: env.GHIDRA_ZIP_URL != ''
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "$env:GHIDRA_ZIP_URL" -OutFile ghidra.zip
+          Expand-Archive ghidra.zip -DestinationPath $env:RUNNER_TEMP\ghidra
+          $dir = Get-ChildItem $env:RUNNER_TEMP\ghidra -Directory | Select-Object -First 1
+          "GHIDRA_INSTALL_DIR=$($dir.FullName)" >> $env:GITHUB_ENV
+
+      - name: Check Gradle project
+        if: env.GHIDRA_ZIP_URL == ''
+        run: gradle tasks --all
+
+      - name: Build extension
+        if: env.GHIDRA_ZIP_URL != ''
+        run: gradle buildExtension
+
+      - uses: actions/upload-artifact@v4
+        if: env.GHIDRA_ZIP_URL != ''
+        with:
+          name: scalpel
+          path: dist/*.zip

@@ -1,0 +1,12 @@
+.gradle/
+build/
+dist/
+out/
+*.class
+*.log
+*.tmp
+*.zip
+*.iml
+.idea/
+.vscode/
+hs_err_pid*
