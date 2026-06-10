@@ -4,6 +4,7 @@ Dark-mode hex editing for Ghidra.
 
 Scalpel is a native Java/Swing Ghidra extension for reverse engineers and any low-level programmers/researchers.
 
+![Scalpel running inside Ghidra](docs/assets/scalpel-ghidra.png)
 
 ## Features
 
